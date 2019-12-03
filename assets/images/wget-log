@@ -1,0 +1,6 @@
+Will not apply HSTS. The HSTS database must be a regular and non-world-writable file.
+ERROR: could not open HSTS store at '/home/k0nat4/.wget-hsts'. HSTS will be disabled.
+--2019-11-13 15:15:28--  https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQGjzjlcmFtPW1nX81Qm4Lc7fk40l4QYDxp2vrui7R_RbUAItdacg
+Resolving encrypted-tbn0.gstatic.com (encrypted-tbn0.gstatic.com)... 172.217.27.142, 2404:6800:4012:1::200e
+Connecting to encrypted-tbn0.gstatic.com (encrypted-tbn0.gstatic.com)|172.217.27.142|:443... failed: Resource temporarily unavailable.
+Connecting to encrypted-tbn0.gstatic.com (encrypted-tbn0.gstatic.com)|2404:6800:4012:1::200e|:443... failed: Network is unreachable.
