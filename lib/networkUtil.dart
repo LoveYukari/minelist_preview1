@@ -273,8 +273,18 @@ class NetworkUtil {
         }
     );
     Response response = await conn.post(ipAddress + "add_userFavorites.php", data: formData);
-
-
+  }
+  static userDeleteFavorites(json_itemInfo item,json_userInfo user)async
+  {
+    Dio conn = new Dio();
+    FormData formData =
+    new FormData.fromMap(
+        {
+          'itemID':item.itemID,
+          'userID':user.userID,
+        }
+    );
+    Response response = await conn.post(ipAddress + "delete_userFavorites.php", data: formData);
   }
 
 }

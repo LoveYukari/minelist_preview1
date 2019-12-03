@@ -60,11 +60,14 @@ class _userFavoritesPageState extends State<userFavoritesPage> {
             showDialog(context: context,builder: (BuildContext context){
               return AlertDialog(
                   title:Text("Warning!"),
-                  content:Text("Are you sure to Delete,my dear admin?"),
-                  actions:[FlatButton(child: Text("YES"),onPressed:(){/*NetworkUtil.deleteUserFavorites(innerList[count],widget.user)*/
-                    print("Yes");
-                  Navigator.of(context).pop(true);}),
-          FlatButton(child: Text("NO"),onPressed: (){Navigator.of(context).pop(false);})]
+                  content:Text("Are you sure to Delete?"),
+                  actions:[FlatButton(child: Text("YES"),onPressed:(){
+                    NetworkUtil.userDeleteFavorites(innerList[count],widget.user);
+                    innerList.removeAt(count);
+                    Navigator.of(context).pop(true);
+                    //Navigator.pop(context);
+                  }),
+                    FlatButton(child: Text("NO"),onPressed: (){Navigator.of(context).pop(false);})]
               );
             });
 
