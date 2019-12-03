@@ -28,7 +28,7 @@ class _LoginPageState extends State<LoginPage> {
     passwd:"abcdeffg1234567",
     createTime:'2019-11-26',
     lastUpdateTime: '2019-11-26',
-    userAuthority: '3');
+    userAuthority: '1');
     final emailField = TextField(
       obscureText: false,
       style: style,

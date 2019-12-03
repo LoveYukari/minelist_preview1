@@ -151,13 +151,22 @@ class NetworkUtil {
   static getUserFavorites(json_userInfo user)async
   {
     Dio conn = new Dio();
-    Response response = await conn.get(ipAddress + "s_userFavorites_User.php");
+    FormData formData =
+    new FormData.fromMap(
+        {'userID':user.userID}
+    );
+    Response response = await conn.post(ipAddress + "s_userFavorites_userID.php",data:formData);
     var tempStr = response.data.toString();
     var Strs = tempStr.split('^');
-    List<json_userFavorites> res = new List(Strs.length-1);
+    List<json_itemInfo> res = new List(Strs.length - 1);
     try {
-      for(int i=0;i<Strs.length;i++) {
-        res[i]=json_userFavorites.fromJson(json.decode(Strs[i]));
+      for (int i = 0; i < Strs.length - 1; i++) {
+        json_itemInfo t = json_itemInfo.fromJson(json.decode(Strs[i]));
+        try {
+          res[i] = t;
+        } catch (error) {
+          print(error.toString());
+        }
       }
       return res;
     } catch (error) {
@@ -253,7 +262,19 @@ class NetworkUtil {
     }
   }
 
-  static userAddfavorites(json_itemInfo item,json_userInfo user)
-  {}
+  static userAddfavorites(json_itemInfo item,json_userInfo user)async
+  {
+    Dio conn = new Dio();
+    FormData formData =
+    new FormData.fromMap(
+        {
+          'itemID':item.itemID,
+          'userID':user.userID,
+        }
+    );
+    Response response = await conn.post(ipAddress + "add_userFavorites.php", data: formData);
+
+
+  }
 
 }

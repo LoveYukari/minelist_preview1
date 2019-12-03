@@ -21,7 +21,7 @@ class userFavoritesPage extends StatefulWidget {
 class _userFavoritesPageState extends State<userFavoritesPage> {
   @override
   Widget build(BuildContext context) {
-    List<json_itemInfo> innerList;
+    List<json_itemInfo> innerList = new List();
     for(var i=0;i<widget.searchList.length;i++)
     {
       innerList.add(widget.searchList[i]);
@@ -54,25 +54,32 @@ class _userFavoritesPageState extends State<userFavoritesPage> {
         //secondaryBackground: Container(color: Colors.pink),
         dragStartBehavior: DragStartBehavior.down,
         direction: DismissDirection.endToStart,
-        onDismissed: (direction)async{
-          setState(() {
-            try{
-              innerList.removeAt(count);
-            }
-            catch(error) {
-              Navigator.pop(context);
-            }
-            var resp = NetworkUtil.deleteItem(innerList[count]);
-            print(resp.toString());
-          });
+        confirmDismiss: (direction)async{
+          print("confirmdissmiss");
+          try {
+            showDialog(context: context,builder: (BuildContext context){
+              return AlertDialog(
+                  title:Text("Warning!"),
+                  content:Text("Are you sure to Delete,my dear admin?"),
+                  actions:[FlatButton(child: Text("YES"),onPressed:(){/*NetworkUtil.deleteUserFavorites(innerList[count],widget.user)*/
+                    print("Yes");
+                  Navigator.of(context).pop(true);}),
+          FlatButton(child: Text("NO"),onPressed: (){Navigator.of(context).pop(false);})]
+              );
+            });
+
+          }
+          catch(error){
+          }
+          //innerList = await NetworkUtil.getItemInfo_byCategory(widget.category);
         },
       );
     }
 
     return Scaffold(
         appBar: AppBar(
-          title: new Text("Favorites"),
-          backgroundColor: Colors.blueAccent,
+          title: new Text("Favorites",),
+          backgroundColor: Colors.green,
         ),
         body: new ListView.builder(
           padding: new EdgeInsets.all(3.0),

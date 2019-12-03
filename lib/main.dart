@@ -140,7 +140,11 @@ class _MyHomePageState extends State<MyHomePage> {
               ListTile(
                 leading:Icon(Icons.star),
                 title: Text("userFavorites"),
-                onTap:(){},
+                onTap:()async{
+                  var searchList = await NetworkUtil.getUserFavorites(widget.userInfo);
+                  print(searchList);
+                  Navigator.push(context,new MaterialPageRoute(builder: (context)=>new userFavoritesPage(searchList: searchList,user:widget.userInfo)));
+                },
               )
             ])
     );
