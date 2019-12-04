@@ -89,6 +89,7 @@ class _userFavoritesPageState extends State<userFavoritesPage> {
           itemExtent: 60.0,
           itemCount: innerList.length,
           itemBuilder: userFavoriteListViewItemBuilder,
-        ));
+        )
+    );
   }
 }
