@@ -62,6 +62,7 @@ class NetworkUtil {
     }
     //print(ipAddress + "s_itemInfo.php");
     var tempStr = response.data.toString();
+    print(tempStr);
     var Strs = tempStr.split('^');
     List<json_itemInfo> res = new List(Strs.length - 1);
     try {
