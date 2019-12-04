@@ -4,6 +4,7 @@ import 'package:http/http.dart';
 import 'package:minelist_preview1/createItemPage.dart';
 import 'package:minelist_preview1/registerPage.dart';
 import 'package:minelist_preview1/userListPage.dart';
+import 'package:minelist_preview1/userRequestPage.dart';
 import 'package:minelist_preview1/userfavoritesPage.dart';
 import 'dataJson.dart';
 import 'MenuItemPage.dart';
@@ -166,6 +167,13 @@ class _MyHomePageState extends State<MyHomePage> {
             var searchList = await NetworkUtil.getUserFavorites(widget.userInfo);
             Navigator.push(context,new MaterialPageRoute(builder: (context)=>new userFavoritesPage(searchList: searchList,user:widget.userInfo)));
           },
+        ),
+        ListTile(
+          leading:Icon(Icons.add_to_queue),
+          title:Text("Request"),
+          onTap:()async{
+            Navigator.push(context,new MaterialPageRoute(builder: (context)=>new userRequestPage(title:"request")));
+          }
         )
       ],)
     );

@@ -23,9 +23,14 @@ class _MenuItemPageState extends State<MenuItemPage> {
   @override
   Widget build(BuildContext context) {
     List<json_itemInfo> innerList = new List();
-    for(var i=0;i<widget.searchList.length;i++)
+    try {
+      for (var i = 0; i < widget.searchList.length; i++) {
+        innerList.add(widget.searchList[i]);
+      }
+    }
+    catch(error)
     {
-      innerList.add(widget.searchList[i]);
+      print(error.toString());
     }
     Widget AdminMenuItemListViewItemBuilder(BuildContext context, int count) {
       json_itemInfo itemInfo = innerList[count];
